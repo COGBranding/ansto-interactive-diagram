@@ -1,0 +1,104 @@
+<head>
+    <link href="./dist/interactive-image.css" rel="stylesheet">
+    <link href="./dist/style.css" rel="stylesheet">
+    <title>ANSTO Synroc Facility</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Main container of a scene -->
+    <div id="synroc-diagram">
+        <img src="./assets/facility-backdrop-alt.jpg"   class="interactive-images">
+        <div class="navigation">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <div class="nowidth"></div>
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./dist/interactive-image.js"></script>
+
+    <script>
+        // Plugin Items collection
+            var items = [
+                // Text items
+                {
+                    type: "text",
+                    title: "1. Transfer of waste from Mo-99 production",
+                    description: "The ILW is stored and characterised prior to introduction to the waste treatment facility.",
+                    position: {
+                        left: 1076,
+                        top: 445
+                    },
+                    picturePath: "./assets/synroc-step-graphic-1.jpg",
+                    customClassName: "synroc-diagram__hotspot visiblebox-1 first",
+                    sticky: true
+                },
+                {
+                    type: "text",
+                    title: "2. Addition of Synroc additives and drying",
+                    description: "The ILW is processed remotely within a hot cell and the tailored Synroc additives introduced and mixed with the waste. The liquid is converted into a granulated powder via a drying and calcination process.",
+                    position: {
+                        left: 675,
+                        top: 380
+                    },
+                    picturePath: "./assets/synroc-step-graphic-2.jpg",
+                    customClassName: "synroc-diagram__hotspot visiblebox-2 second",
+                    sticky: true
+                },
+                {
+                    type: "text",
+                    title: "3. Filling the canister",
+                    description: "The granulated waste powder is dispensed into a specially designed canister.",
+                    position: {
+                        left: 670,
+                        top: 505
+                    },
+                    picturePath: "./assets/synroc-step-graphic-3.jpg",
+                    customClassName: "synroc-diagram__hotspot visiblebox-3 third",
+                    sticky: true
+                },
+                {
+                    type: "text",
+                    title: "4. Hot isostatic pressing",
+                    description: "The canister is sealed and placed into a hot isostatic press where heat and pressure are applied to immobilise the waste.",
+                    position: {
+                        left: 110,
+                        top: 570
+                    },
+                    picturePath: "./assets/synroc-step-graphic-4.jpg",
+                    customClassName: "synroc-diagram__hotspot visiblebox-4 forth",
+                    sticky: true
+                },
+                {
+                    type: "text",
+                    title: "5. Durable compact wasteform",
+                    description: " The waste has now been treated into a durable, low-volume, product ready for final disposal and is transferred out of the waste treatment facility.",
+                    position: {
+                        left: 392,
+                        top: 385
+                    },
+                    picturePath: "./assets/synroc-step-graphic-5.jpg",
+                    customClassName: "synroc-diagram__hotspot visiblebox-5 fifth",
+                    sticky: true
+                }
+            ];
+
+            // Plugin configuration
+            var options = {
+                debug: false,                                                 // Display console logs (default: false)
+                allowHtml: true,                                             // Allow HTML markup inside items (default: false)
+                shareBox: false,                                              // Display the social media share box (default: true)
+                triggerEvent: 'click',                                       // Mouse event on the hotspots that triggers the display of items (default: hover)
+            };
+
+            // Plugin activation
+            $(document).ready(function () {
+                $("#synroc-diagram").interactiveImage(items, options);
+            });
+            </script>
+    <script defer src="./dist/keyboard.js"></script></body>
+</html>
