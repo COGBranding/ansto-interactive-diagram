@@ -1,106 +1,268 @@
-$(document).ready(function () {
-    $("body").on("click", ".close-button", function () {
-        $(".icon-radio-checked").removeClass("selected");
-    });
+ // Plugin Items collection
+ var items = [
+    // Text items
+    {
+        type: "text",
+        title: "1. Transfer of waste from Mo-99 production",
+        description: "The ILW is stored and characterised prior to introduction to the waste treatment facility.",
+        position: {
+            left: 1076,
+            top: 445
+        },
+        picturePath: "./assets/synroc-step-graphic-1.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-1 first",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "2. Addition of Synroc additives and drying",
+        description: "The ILW is processed remotely within a hot cell and the tailored Synroc additives introduced and mixed with the waste. The liquid is converted into a granulated powder via a drying and calcination process.",
+        position: {
+            left: 675,
+            top: 380
+        },
+        picturePath: "./assets/synroc-step-graphic-2.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-2 second",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "3. Filling the canister",
+        description: "The granulated waste powder is dispensed into a specially designed canister.",
+        position: {
+            left: 670,
+            top: 505
+        },
+        picturePath: "./assets/synroc-step-graphic-3.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-3 third",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "4. Hot isostatic pressing",
+        description: "The canister is sealed and placed into a hot isostatic press where heat and pressure are applied to immobilise the waste.",
+        position: {
+            left: 110,
+            top: 570
+        },
+        picturePath: "./assets/synroc-step-graphic-4.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-4 forth",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "5. Durable compact wasteform",
+        description: " The waste has now been treated into a durable, low-volume, product ready for final disposal and is transferred out of the waste treatment facility.",
+        position: {
+            left: 392,
+            top: 385
+        },
+        picturePath: "./assets/synroc-step-graphic-5.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-5 fifth",
+        sticky: true
+    }
+];
 
-    $(".icon-radio-checked").on("click", function () {
-        $(".icon-radio-checked").removeClass("selected");
-        $(".close-button").click();
-        $(this).addClass("selected");
-        $(this).find(".active").css("display", "block");
-    });
-    // if (window.innerWidth <= 980) {
-    if (
-        /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(
-            navigator.userAgent
-        ) ||
-        /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(
-            navigator.userAgent.substr(0, 4)
-        )
-    ) {
-        $(".text-item").append($(".navigation"));
+
+var mobile_items = [
+    // Text items
+    {
+        type: "text",
+        title: "1. Transfer of waste from Mo-99 production",
+        description: "The ILW is stored and characterised prior to introduction to the waste treatment facility.",
+        position: {
+            left: 803,
+            top: 327
+        },
+        picturePath: "./assets/synroc-step-graphic-mobile-1.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-1 first",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "2. Addition of Synroc additives and drying",
+        description: "The ILW is processed remotely within a hot cell and the tailored Synroc additives introduced and mixed with the waste. The liquid is converted into a granulated powder via a drying and calcination process.",
+        position: {
+            left: 500,
+            top: 277
+        },
+        picturePath: "./assets/synroc-step-graphic-mobile-2.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-2 second",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "3. Filling the canister",
+        description: "The granulated waste powder is dispensed into a specially designed canister.",
+        position: {
+            left: 500,
+            top: 375
+        },
+        picturePath: "./assets/synroc-step-graphic-mobile-3.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-3 third",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "4. Hot isostatic pressing",
+        description: "The canister is sealed and placed into a hot isostatic press where heat and pressure are applied to immobilise the waste.",
+        position: {
+            left: 85,
+            top: 430
+        },
+        picturePath: "./assets/synroc-step-graphic-mobile-4.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-4 forth",
+        sticky: true
+    },
+    {
+        type: "text",
+        title: "5. Durable compact wasteform",
+        description: " The waste has now been treated into a durable, low-volume, product ready for final disposal and is transferred out of the waste treatment facility.",
+        position: {
+            left: 290,
+            top: 285
+        },
+        picturePath: "./assets/synroc-step-graphic-mobile-5.jpg",
+        customClassName: "synroc-diagram__hotspot visiblebox-5 fifth",
+        sticky: true
+    }
+];
+
+// Plugin configuration
+var options = {
+    debug: false,                                                 // Display console logs (default: false)
+    allowHtml: true,                                             // Allow HTML markup inside items (default: false)
+    shareBox: false,                                              // Display the social media share box (default: true)
+    triggerEvent: 'click',                                       // Mouse event on the hotspots that triggers the display of items (default: hover)
+};
+
+// Plugin activation
+$(document).ready(function() {
+    if(window.outerWidth <=767) {
+        $("#synroc-diagram-mobile").interactiveImage(mobile_items, options);
+        $("#synroc-diagram-desktop").css('display', 'none');
+        $("#synroc-diagram-mobile").css('display', 'block');
+    }
+    else{
+        $("#synroc-diagram-desktop").interactiveImage(items, options);
+        $("#synroc-diagram-mobile").css('display', 'none');
+        $("#synroc-diagram-desktop").css('display', 'block');
     }
 });
 
-$("body").on("keydown", function (e) {
-    if ($(".active").css("display") == "block") {
-        thiss = $(".active");
+$(window).on('resize', function(){
+    if(window.outerWidth <=767) {
+        if(!$('#synroc-diagram-mobile .hotspot').length >= 1) {
+            $("#synroc-diagram-mobile").interactiveImage(mobile_items, options);
+            closeOthers();
+        }
+        if(!$('#synroc-diagram-mobile .visiblebox-1 .text-item .navigation').length >=1 ) {
+            $('#synroc-diagram-mobile .text-item').append($('#synroc-diagram-desktop .navigation'));
+        }
+        $("#synroc-diagram-desktop").css('display', 'none');
+        $("#synroc-diagram-mobile").css('display', 'block');
+    }
+    else{
+        if($('#synroc-diagram-desktop .hotspot').length <=1) {
+            $("#synroc-diagram-desktop").interactiveImage(items, options);
+        }
+        if($('#synroc-diagram-desktop .navigation').length <=1) {
+            $('#synroc-diagram-desktop').append($('#synroc-diagram-mobile .visiblebox-1 .text-item .navigation').clone());
+        }
+        closeOthers();
+        $("#synroc-diagram-mobile").css('display', 'none');
+        $("#synroc-diagram-desktop").css('display', 'block');
+    }
+});
+
+$(document).ready(function() {
+    $('body').on('click', '.close-button', function () {
+         $('.icon-radio-checked').removeClass('selected')
+    })
+
+    closeOthers();
+
+    if(window.outerWidth <=767) {
+        $('#synroc-diagram-mobile .text-item').append($('.navigation'));
+    }
+});
+
+$("body").on('keydown', function(e) {
+    if($('.active').css('display') == "block"){
+        thiss = $('.active');
         var theClass = thiss.attr("class").match(/visiblebox[\w-]*\b/);
         classNo = parseInt(theClass[0].split("-")[1]);
-        if (e.keyCode == 37) {
-            // left
-            moveLeft(classNo, thiss);
-        } else if (e.keyCode == 39) {
-            // right
-            moveRight(classNo, thiss);
+         if(e.keyCode == 37) { // left
+                moveLeft(classNo,  thiss);
+          }
+          else if(e.keyCode == 39) { // right
+                moveRight(classNo, thiss);
+          }   
+    }else{
+        if(e.keyCode == 37) {
+            displayDefault()
         }
-    } else {
-        if (e.keyCode == 37) {
-            $(".visiblebox-1").css("display", "block");
-            $(".visiblebox-1").addClass("active");
-            $(".visiblebox-1").prev(".icon-radio-checked").addClass("selected");
-        }
-    }
+    }    
 });
 
-$(".left, .right").on("click", function (e) {
-    if ($(".active").css("display") == "block") {
-        thiss = $(".active");
+$(".left, .right").on('click', function(e) {
+    if($('.active').css('display') == "block"){
+        thiss = $('.active');
         var theClass = thiss.attr("class").match(/visiblebox[\w-]*\b/);
         classNo = parseInt(theClass[0].split("-")[1]);
-        if ($(this).hasClass("left")) {
-            if (
-                /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(
-                    navigator.userAgent
-                ) ||
-                /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(
-                    navigator.userAgent.substr(0, 4)
-                )
-            ) {
-                moveRight(classNo, thiss);
-            } else {
-                moveLeft(classNo, thiss);
+        if($(this).hasClass('left')){
+            if(window.outerWidth <=767) {
+                moveRight(classNo, thiss)
+            }
+            else{
+                moveLeft(classNo, thiss)
             }
         }
-        if ($(this).hasClass("right")) {
-            if (
-                /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(
-                    navigator.userAgent
-                ) ||
-                /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(
-                    navigator.userAgent.substr(0, 4)
-                )
-            ) {
-                moveLeft(classNo, thiss);
-            } else {
-                moveRight(classNo, thiss);
+        if($(this).hasClass('right')){
+            if(window.outerWidth <=767) {
+                moveLeft(classNo, thiss)
+            }
+            else{
+                moveRight(classNo, thiss)
             }
         }
-    } else {
-        $(".visiblebox-1").css("display", "block");
-        $(".visiblebox-1").addClass("active");
-        $(".visiblebox-1").prev(".icon-radio-checked").addClass("selected");
-    }
+    }else{
+        displayDefault()
+    }    
 });
 
-function moveLeft(classNo, thiss) {
+function displayDefault(){
+    $('.visiblebox-1').css('display', 'block');  
+    $('.visiblebox-1').addClass('active');
+    $('.visiblebox-1').prev('.icon-radio-checked').addClass('selected');
+}
+function moveLeft(classNo, thiss){
     classNo = classNo + 1;
-    nextClass = ".visiblebox-" + classNo;
-    thiss.css("display", "none");
-    thiss.prev(".icon-radio-checked").removeClass("selected");
-    $(nextClass).css("display", "block");
-    thiss.removeClass("active");
-    $(nextClass).addClass("active");
-    $(nextClass).prev(".icon-radio-checked").addClass("selected");
+    classNo = classNo <=5?classNo:1
+    displayActive(classNo, thiss)
 }
 
-function moveRight(classNo, thiss) {
+function moveRight(classNo, thiss){
     classNo = classNo - 1;
-    prevClass = ".visiblebox-" + classNo;
-    thiss.css("display", "none");
-    thiss.prev(".icon-radio-checked").removeClass("selected");
-    $(prevClass).css("display", "block");
-    thiss.removeClass("active");
-    $(prevClass).addClass("active");
-    $(prevClass).prev(".icon-radio-checked").addClass("selected");
+    classNo = classNo >=1 ? classNo:5
+    displayActive(classNo, thiss)
+}   
+
+function displayActive(classNo, thiss){
+    cls = ".visiblebox-" + classNo;
+    thiss.css('display', 'none');
+    thiss.prev('.icon-radio-checked').removeClass('selected');
+    $(cls).css('display', 'block');  
+    thiss.removeClass('active');
+    $(cls).addClass('active');
+    $(cls).prev('.icon-radio-checked').addClass('selected');
+}
+
+function closeOthers(){
+    $('.icon-radio-checked').on('click', function(){
+        $('.icon-radio-checked').removeClass('selected');
+        $('.close-button').click();
+        $(this).addClass('selected');
+        $(this).find('.active').css('display', 'block');
+    })
 }

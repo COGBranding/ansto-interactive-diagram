@@ -1,4 +1,4 @@
-body {
+body{
     counter-reset: numbers;
     font-family: "Poppins";
 }
@@ -7,14 +7,46 @@ span, p {
     font-family: "Poppins" !important;
 }
 
-@media(max-width:980px){
-    .item.behavior-sticky.synroc-diagram__hotspot.active {
-        top: 1020px !important;
-        left: 420px !important;
+@media(min-device-width:768px){
+    .desktop {
+        display: block;
+        width: 1280px;
     }
-    .interactive-image .item {
+
+    .interactive-image {
+        width: 1280px;
+    }
+
+    .mobile {
+        display: none;
+    }
+}
+@media(max-device-width:767px){
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+        width: 100%
+    }
+    .interactive-image .close-button {
+        display: none;
+    }
+    .item.visiblebox-1 {
+        display: block;
+    }
+}
+
+@media(max-device-width:767px){
+    .item.behavior-sticky.synroc-diagram__hotspot {
+        top: 620px !important;
+        left: 0px !important;
+        width: 100%;
+    }
+    /* .interactive-image .item {
         transform: scale(2);
-    }
+    } */
 }
 
 .interactive-image .text-item {
@@ -24,15 +56,22 @@ span, p {
         flex-direction: column;
 }
 
-@media(max-width: 980px){
+@media(max-width: 767px){
     .interactive-image .item::after, .interactive-image .item::before{
         content: none;
     }
 }
 @media(min-width: 981px){
     .interactive-image .item.visiblebox-1 {
-        top: 50px !important;
+        top: 290px !important;
+        left: 705px !important;
     }
+
+    .interactive-image .item.visiblebox-2 {
+        top: 200px !important;
+        left: 300px !important;
+    }
+
     .interactive-image .item.visiblebox-1::after, .interactive-image .item.visiblebox-3::before,.interactive-image .item.visiblebox-3::after, .interactive-image .item.visiblebox-4::before,.interactive-image .item.visiblebox-4::after{
         border: solid transparent;
         content: ' ';
@@ -44,9 +83,15 @@ span, p {
         
     }
     .interactive-image .item.visiblebox-1::after{
-        left: 50%;
-        top: 100%;
-        transform: rotate(180deg);     
+        left: 102%;
+        top: 48%;
+        transform: rotate(90deg);     
+    }
+
+    .interactive-image .item.visiblebox-2::after{
+        left: 102%;
+        top: 48%;
+        transform: rotate(90deg);     
     }
 
     .interactive-image .item.visiblebox-1::after,.interactive-image .item.visiblebox-3::after, .interactive-image .item.visiblebox-4::after{
@@ -57,22 +102,32 @@ span, p {
 
     .interactive-image .item.visiblebox-3 {
         left: 300px !important;
-        top : 390px !important;
+        top : 360px !important;
     }
-    .interactive-image .item.visiblebox-3::before,.interactive-image .item.visiblebox-3::after{
-        left: 102%;
-        border: solid transparent;
-        content: ' ';
+    .interactive-image .item.visiblebox-3::after{
+        left: 102% !important;
+        top: 48% !important;
+        transform: rotate(90deg);     
     }
 
     .interactive-image .item.visiblebox-4 {
-        left: 5px !important;
-        top : 200px !important;
+        left: 170px !important;
+        top : 410px !important;
     }
     .interactive-image .item.visiblebox-4::before,.interactive-image .item.visiblebox-4::after{
-        left: 40%;
-        top: 100%;
-        transform: rotate(180deg);  
+        left: -2%;
+        top: 48%;
+        transform: rotate(270deg);  
+    }
+
+    .interactive-image .item.visiblebox-5 {
+        left: 20px !important;
+        top : 245px !important;
+    }
+    .interactive-image .item.visiblebox-5::before,.interactive-image .item.visiblebox-5::after{
+        left: 102%;
+        top: 43%;
+        transform: rotate(90deg);  
     }
 }
 
@@ -86,7 +141,7 @@ span, p {
 .interactive-image .text-item span.title{
     order: 2;        
     font-weight: 500 !important;
-    font-size: 16px !important;
+    font-size: 20px !important;
     line-height: 19.2px;
     color: #2f2f2f !important;
     padding-top: 1em;
@@ -105,12 +160,32 @@ span, p {
 .interactive-image .text-item p.description{
     order: 3; 
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 16.8px;
     color: #2f2f2f;
     max-width: 320px;
 }
 
+@media(max-device-width: 767px) {
+    .interactive-image .text-item span.title, .interactive-image .text-item .picture, .interactive-image .text-item p.description{
+        width: unset;
+        max-width: unset;
+    }
+    .interactive-image .text-item .picture{
+        height: unset;
+        max-height: unset;
+        max-width: unset;
+        object-fit: contain;
+    }
+    .interactive-image .text-item p.description{
+        font-size: 24px;
+        line-height: 1.5em;
+    }
+
+    .interactive-image .text-item span.title{
+        font-size: 26px !important;
+    }
+}
 
 .hotspot.icon-radio-checked {
     display: block;
@@ -151,13 +226,12 @@ span, p {
 
 .interactive-image, .interactive-images {
     height: auto;
-    width: 1280px;
     margin: auto;
 }
 
 .interactive-image .item {
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
 }
 
 .interactive-image .close-button {
@@ -178,11 +252,10 @@ span, p {
     background-color: #C8C8C8;
 }
 
-@media(max-width: 980px){
+@media(max-width: 767px){
     .navigation{
         position: relative;
         order: 4;
-        margin-top: 20px;
     }
 
 }
@@ -216,8 +289,14 @@ span, p {
     background-repeat: no-repeat;
 }
 
-@media(max-width: 980px){
-    .navigation .left, .navigation .left {
+@media(max-device-width: 767px){
+    .navigation {
+        position: relative;
+        width: 120px;
+        margin-top: 30px;
+        order: 4;
+    }
+    .navigation .left, .navigation .right {
         padding: 20px;
     }
     .navigation .right::after {
@@ -227,7 +306,7 @@ span, p {
         height: 20px;
         position: absolute;
         top: 20px;
-        left: 50px;
+        right: 20px;
         background-repeat: no-repeat;
     }
     
@@ -238,7 +317,28 @@ span, p {
         height: 20px;
         position: absolute;
         top: 20px;
-        left: 10px;
+        left: 20px;
         background-repeat: no-repeat;
     }
+
+    .navigation .left {
+        border: 1px solid;
+        padding: 30px;
+        border-top-width: 1px;
+        border-left-width: 1px;
+        border-bottom-width: 1px;
+        border-right-width: 0;
+        border-color: rgba(0,0,0,0.5);
+    }
+
+    .navigation .right {
+        padding: 30px;
+        border: 1px solid;
+        border-top-width: 1px;
+        border-left-width: 1px;
+        border-bottom-width: 1px;
+        border-right-width: 1px;
+        border-color: rgba(0,0,0,0.5);
+    }
+
 }
