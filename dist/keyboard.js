@@ -1,4 +1,57 @@
- // Plugin Items collection
+// Selecting the iframe element
+var frame = window.parent.document.getElementsByClassName("interactive-flow-diagram__iframe");
+console.log(frame[0])
+// Adjusting the iframe height onload event
+frame[0].onload = function()
+// function execute while load the iframe
+{
+// set the height of the iframe as 
+// the height of the iframe content
+frame[0].style.height = 
+frame[0].contentWindow.document.body.scrollHeight + 'px';
+    
+
+// set the width of the iframe as the 
+// width of the iframe content
+frame[0].style.width  = 
+frame[0].contentWindow.document.body.scrollWidth+'px';
+    
+}  
+    
+
+
+// a = (window.parent.document.getElementsByClassName('site-frame__row '))
+// console.log(a)
+// $(a).css('max-width', 'unset');
+$(window.parent.document.getElementsByClassName('interactive-flow-diagram__wrapper')).css('margin-bottom','300px');
+// $(window.parent.document.getElementsByClassName('interactive-flow-diagram__iframe')).css('height','1080px');
+// $(window.parent.document.getElementsByClassName('interactive-flow-diagram__iframe')).css('width','1280px');
+// $(a).removeAttr('max-width');
+
+var console = {
+    __on : {},
+    addEventListener : function (name, callback) {
+      this.__on[name] = (this.__on[name] || []).concat(callback);
+      return this;
+    },
+    dispatchEvent : function (name, value) {
+      this.__on[name] = (this.__on[name] || []);
+      for (var i = 0, n = this.__on[name].length; i < n; i++) {
+        this.__on[name][i].call(this, value);
+      }
+      return this;
+    },
+    log: function () {
+      var a = [];
+      // For V8 optimization
+      for (var i = 0, n = arguments.length; i < n; i++) {
+        a.push(arguments[i]);
+      }
+      this.dispatchEvent("log", a);
+    }
+  };
+
+// Plugin Items collection
  var items = [
     // Text items
     {
@@ -151,27 +204,29 @@ $(document).ready(function() {
 });
 
 function reScale(){
-    if(window.outerWidth > 900 && window.outerWidth < 1280) {
+    // $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
+    // $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.parent.outerWidth/1280) /2 ) + ')');
+    if(window.parent.outerWidth > 900 && window.parent.outerWidth < 1280) {
         $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
-        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.outerWidth/1280) * Math.abs(Math.sin(1+(window.innerWidth/1280))) ) + ')');
+        $('div#synroc-diagram-desktop').css('transform', 'scale(' + (((window.parent.outerWidth/1280) ) / 1.3 ) + ')');
     }
-    if(window.outerWidth > 767 && window.outerWidth < 830) {
+    if(window.parent.outerWidth > 767 && window.parent.outerWidth < 830) {
         $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
-        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.outerWidth/1280) * Math.abs(Math.sin(1+(window.innerWidth/1280))) * 1.2 ) + ')');
+        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.parent.outerWidth/1280) / 1.2 ) + ')');
     }
-    if(window.outerWidth > 830 && window.outerWidth < 900) {
+    if(window.parent.outerWidth > 830 && window.parent.outerWidth < 900) {
         $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
-        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.outerWidth/1280) * Math.abs(Math.sin(1+(window.innerWidth/1280))) * 1.1 ) + ')');
+        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.parent.outerWidth/1280)  / 1.3 ) + ')');
     }
 }
-$(window).on('load', function(){
+$(parent).on('load', function(){
     reScale();
 });
 
 
-$(window).on('resize', function(){
+$(parent).on('resize', function(){
+    console.log($(parent).closest(' .interactive-flow-diagram__iframe'));
     reScale();
-
     if(window.outerWidth <=767) {
         // $('div#synroc-diagram-mobile').css('transform', 'scale(' + (window.outerWidth/767) + ')');
         if(!$('#synroc-diagram-mobile .hotspot').length >= 1) {
