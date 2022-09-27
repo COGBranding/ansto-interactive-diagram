@@ -1,57 +1,4 @@
-// Selecting the iframe element
-var frame = window.parent.document.getElementsByClassName("interactive-flow-diagram__iframe");
-console.log(frame[0])
-// Adjusting the iframe height onload event
-frame[0].onload = function()
-// function execute while load the iframe
-{
-// set the height of the iframe as 
-// the height of the iframe content
-frame[0].style.height = 
-frame[0].contentWindow.document.body.scrollHeight + 'px';
-    
-
-// set the width of the iframe as the 
-// width of the iframe content
-frame[0].style.width  = 
-frame[0].contentWindow.document.body.scrollWidth+'px';
-    
-}  
-    
-
-
-// a = (window.parent.document.getElementsByClassName('site-frame__row '))
-// console.log(a)
-// $(a).css('max-width', 'unset');
-$(window.parent.document.getElementsByClassName('interactive-flow-diagram__wrapper')).css('margin-bottom','300px');
-// $(window.parent.document.getElementsByClassName('interactive-flow-diagram__iframe')).css('height','1080px');
-// $(window.parent.document.getElementsByClassName('interactive-flow-diagram__iframe')).css('width','1280px');
-// $(a).removeAttr('max-width');
-
-var console = {
-    __on : {},
-    addEventListener : function (name, callback) {
-      this.__on[name] = (this.__on[name] || []).concat(callback);
-      return this;
-    },
-    dispatchEvent : function (name, value) {
-      this.__on[name] = (this.__on[name] || []);
-      for (var i = 0, n = this.__on[name].length; i < n; i++) {
-        this.__on[name][i].call(this, value);
-      }
-      return this;
-    },
-    log: function () {
-      var a = [];
-      // For V8 optimization
-      for (var i = 0, n = arguments.length; i < n; i++) {
-        a.push(arguments[i]);
-      }
-      this.dispatchEvent("log", a);
-    }
-  };
-
-// Plugin Items collection
+ // Plugin Items collection
  var items = [
     // Text items
     {
@@ -59,7 +6,7 @@ var console = {
         title: "1. Transfer of waste from Mo-99 production",
         description: "The ILW is stored and characterised prior to introduction to the waste treatment facility.",
         position: {
-            left: "1076",
+            left: 1076,
             top: 445
         },
         picturePath: "./assets/synroc-step-graphic-1.jpg",
@@ -228,7 +175,6 @@ $(parent).on('resize', function(){
     console.log($(parent).closest(' .interactive-flow-diagram__iframe'));
     reScale();
     if(window.outerWidth <=767) {
-        // $('div#synroc-diagram-mobile').css('transform', 'scale(' + (window.outerWidth/767) + ')');
         if(!$('#synroc-diagram-mobile .hotspot').length >= 1) {
             $("#synroc-diagram-mobile").interactiveImage(mobile_items, options);
             closeOthers();
@@ -240,7 +186,6 @@ $(parent).on('resize', function(){
         $("#synroc-diagram-mobile").css('display', 'block');
     }
     else{
-        $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
         if($('#synroc-diagram-desktop .hotspot').length <=1) {
             $("#synroc-diagram-desktop").interactiveImage(items, options);
         }
