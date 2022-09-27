@@ -6,7 +6,7 @@
         title: "1. Transfer of waste from Mo-99 production",
         description: "The ILW is stored and characterised prior to introduction to the waste treatment facility.",
         position: {
-            left: 1076,
+            left: "1076",
             top: 445
         },
         picturePath: "./assets/synroc-step-graphic-1.jpg",
@@ -150,8 +150,30 @@ $(document).ready(function() {
     }
 });
 
+function reScale(){
+    if(window.outerWidth > 900 && window.outerWidth < 1280) {
+        $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
+        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.outerWidth/1280) * Math.abs(Math.sin(1+(window.innerWidth/1280))) ) + ')');
+    }
+    if(window.outerWidth > 767 && window.outerWidth < 830) {
+        $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
+        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.outerWidth/1280) * Math.abs(Math.sin(1+(window.innerWidth/1280))) * 1.2 ) + ')');
+    }
+    if(window.outerWidth > 830 && window.outerWidth < 900) {
+        $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
+        $('div#synroc-diagram-desktop').css('transform', 'scale(' + ((window.outerWidth/1280) * Math.abs(Math.sin(1+(window.innerWidth/1280))) * 1.1 ) + ')');
+    }
+}
+$(window).on('load', function(){
+    reScale();
+});
+
+
 $(window).on('resize', function(){
+    reScale();
+
     if(window.outerWidth <=767) {
+        // $('div#synroc-diagram-mobile').css('transform', 'scale(' + (window.outerWidth/767) + ')');
         if(!$('#synroc-diagram-mobile .hotspot').length >= 1) {
             $("#synroc-diagram-mobile").interactiveImage(mobile_items, options);
             closeOthers();
@@ -163,6 +185,7 @@ $(window).on('resize', function(){
         $("#synroc-diagram-mobile").css('display', 'block');
     }
     else{
+        $('div#synroc-diagram-desktop').css('transform-origin', 'top left');
         if($('#synroc-diagram-desktop .hotspot').length <=1) {
             $("#synroc-diagram-desktop").interactiveImage(items, options);
         }

@@ -1,0 +1,6 @@
+.idea
+.nyc_output/
+coverage/
+dist/*.map
+docs/_build
+node_modules/
