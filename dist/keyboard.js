@@ -101,14 +101,13 @@ $(document).ready(function() {
             reScale();
             reAlign();
             arrows();
-            closeOthers(); 
-            if(window.outerWidth <=767) {
-                $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() + 10);
+            closeOthers();
+            if(window.innerWidth <=767) {
+                $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() - 60);
                 if(!$('#synroc-diagram .visiblebox-1 .text-item .navigation').length >=1 ) {
                     $('#synroc-diagram .text-item').append($('#synroc-diagram .navigation'));
                 }
             }
-            
     }, 100);
     
 });
@@ -140,21 +139,22 @@ function reScale(){
 
 function reAlign(){
     $('.first').css('left', $('#first').offset().left-400);
-    $('.first').css('top', $('#first').offset().top-100);
+    $('.first').css('top', $('#first').offset().top-250);
 
     $('.second').css('left', $('#second').offset().left-400);
-    $('.second').css('top', $('#second').offset().top-100);
+    $('.second').css('top', $('#second').offset().top-250);
 
     $('.third').css('left', $('#third').offset().left-400);
-    $('.third').css('top', $('#third').offset().top-100);
+    $('.third').css('top', $('#third').offset().top-250);
 
     $('.fourth').css('left', $('#fourth').offset().left+100);
     $('.fourth').css('top', $('#fourth').offset().top-200);
 
-    $('.fifth').css('left', $('#fifth').offset().left-400);
-    $('.fifth').css('top', $('#fifth').offset().top-100);
+    $('.fifth').css('left', $('#fifth').offset().left+50);
+    $('.fifth').css('top', $('#fifth').offset().top-250);
 }
 
+var site_width = window.outerWidth;
 $(parent).on('resize', function(){
     setTimeout(function() {
         if(window.outerWidth <=767) {
@@ -168,14 +168,18 @@ $(parent).on('resize', function(){
             }
         }
         else{
+            if(site_width > (window.outerWidth + 50) || site_width < (window.outerWidth - 50)){
+                reAlign(); 
+            }
             
-            reAlign(); 
             if($('#synroc-diagram .hotspot').length <=1) {
                 $("#synroc-diagram").interactiveImage(items, options);
             }
             if($('#synroc-diagram .navigation').length <=5) {
                 $('#synroc-diagram').append($('#synroc-diagram .visiblebox-1 .text-item .navigation').clone());
                 $('#synroc-diagram .text-item .navigation').remove();
+                $(".left, .right").unbind('click');
+                arrows();
             }
             closeOthers();
         }

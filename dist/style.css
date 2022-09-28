@@ -2,6 +2,11 @@ body{
     font-family: "Poppins";
 }
 
+ellipse{
+    fill: #fff !important;
+    stroke: #fff !important;
+}
+
 span, p {
     font-family: "Poppins" !important;
 }
@@ -127,7 +132,14 @@ span, p {
     border: none;
 }
 
-.interactive-image, .interactive-images, svg {
+@media(min-device-width: 767px){
+    .interactive-image, .interactive-images{
+        height:100%;
+        width: 100%;    
+    }
+}
+
+svg {
     height: auto;
     width: auto;
 }
@@ -155,7 +167,7 @@ span, p {
     background-color: #C8C8C8;
 }
 
-@media(max-width: 767px){
+@media(max-device-width: 767px){
     .navigation{
         position: relative;
         order: 4;
