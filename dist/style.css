@@ -1,5 +1,4 @@
 body{
-    counter-reset: numbers;
     font-family: "Poppins";
 }
 
@@ -10,11 +9,11 @@ span, p {
 @media(min-device-width:768px){
     .desktop {
         display: block;
-        width: 1280px;
+        /* width: 1280px; */
     }
 
     .interactive-image {
-        width: 1280px;
+        /* width: 1280px; */
     }
 
     .mobile {
@@ -61,76 +60,6 @@ span, p {
         content: none;
     }
 }
-@media(min-width: 981px){
-    .interactive-image .item.visiblebox-1 {
-        top: 290px !important;
-        left: 705px !important;
-    }
-
-    .interactive-image .item.visiblebox-2 {
-        top: 200px !important;
-        left: 300px !important;
-    }
-
-    .interactive-image .item.visiblebox-1::after, .interactive-image .item.visiblebox-3::before,.interactive-image .item.visiblebox-3::after, .interactive-image .item.visiblebox-4::before,.interactive-image .item.visiblebox-4::after{
-        border: solid transparent;
-        content: ' ';
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        bottom: unset;
-        
-    }
-    .interactive-image .item.visiblebox-1::after{
-        left: 102%;
-        top: 48%;
-        transform: rotate(90deg);     
-    }
-
-    .interactive-image .item.visiblebox-2::after{
-        left: 102%;
-        top: 48%;
-        transform: rotate(90deg);     
-    }
-
-    .interactive-image .item.visiblebox-1::after,.interactive-image .item.visiblebox-3::after, .interactive-image .item.visiblebox-4::after{
-        border-bottom-color: white;
-        border-width: 7px;
-        margin-left: -7px;
-    }
-
-    .interactive-image .item.visiblebox-3 {
-        left: 300px !important;
-        top : 360px !important;
-    }
-    .interactive-image .item.visiblebox-3::after{
-        left: 102% !important;
-        top: 48% !important;
-        transform: rotate(90deg);     
-    }
-
-    .interactive-image .item.visiblebox-4 {
-        left: 170px !important;
-        top : 410px !important;
-    }
-    .interactive-image .item.visiblebox-4::before,.interactive-image .item.visiblebox-4::after{
-        left: -2%;
-        top: 48%;
-        transform: rotate(270deg);  
-    }
-
-    .interactive-image .item.visiblebox-5 {
-        left: 20px !important;
-        top : 245px !important;
-    }
-    .interactive-image .item.visiblebox-5::before,.interactive-image .item.visiblebox-5::after{
-        left: 102%;
-        top: 43%;
-        transform: rotate(90deg);  
-    }
-}
-
 .forth.active {
     left: 0px !important;
     top: 650px !important;
@@ -199,9 +128,7 @@ span, p {
 }
 
 .hotspot.icon-radio-checked::after {
-    counter-increment: numbers;
     color: #000;
-    content: counter(numbers);
     font-size: 28px;
     font-weight: 500;
     font-family: 'Poppins' !important;
@@ -213,20 +140,21 @@ span, p {
     background-color: #C8C8C8;
 }
 
-.icon-radio-checked.selected::after{
-    color: #fff !important;
+.icon-radio-checked.selected path{
+    fill: #fff !important;
 }
 
-.icon-radio-checked.selected  {
-    background-color: rgba(0,0,0) !important;
+.icon-radio-checked.selected ellipse {
+    fill: rgba(0,0,0) !important;
 }
-.icon-radio-checked::before {
+.icon-radio-checked::before, .interactive-image .item::before , .interactive-image .item::after {
     content: "";
+    border: none;
 }
 
-.interactive-image, .interactive-images {
+.interactive-image, .interactive-images, svg {
     height: auto;
-    margin: auto;
+    width: auto;
 }
 
 .interactive-image .item {
