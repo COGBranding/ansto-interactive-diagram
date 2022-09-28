@@ -46,7 +46,7 @@ span, p {
     order: 2;        
     font-weight: 500 !important;
     font-size: 20px !important;
-    line-height: 19.2px;
+    line-height: 1.3;
     color: #2f2f2f !important;
     padding-top: 1em;
     max-width: 320px;
@@ -87,7 +87,7 @@ span, p {
     }
 
     .interactive-image .text-item span.title{
-        font-size: 22px !important;
+        font-size: 18px !important;
     }
 }
 
