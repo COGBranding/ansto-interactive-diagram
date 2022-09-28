@@ -6,29 +6,8 @@ span, p {
     font-family: "Poppins" !important;
 }
 
-@media(min-device-width:768px){
-    .desktop {
-        display: block;
-        /* width: 1280px; */
-    }
-
-    .interactive-image {
-        /* width: 1280px; */
-    }
-
-    .mobile {
-        display: none;
-    }
-}
 @media(max-device-width:767px){
-    .desktop {
-        display: none;
-    }
 
-    .mobile {
-        display: block;
-        width: 100%
-    }
     .interactive-image .close-button {
         display: none;
     }
@@ -39,13 +18,9 @@ span, p {
 
 @media(max-device-width:767px){
     .item.behavior-sticky.synroc-diagram__hotspot {
-        top: 620px !important;
         left: 0px !important;
         width: 100%;
     }
-    /* .interactive-image .item {
-        transform: scale(2);
-    } */
 }
 
 .interactive-image .text-item {
@@ -107,12 +82,12 @@ span, p {
         object-fit: contain;
     }
     .interactive-image .text-item p.description{
-        font-size: 24px;
+        font-size: 18px;
         line-height: 1.5em;
     }
 
     .interactive-image .text-item span.title{
-        font-size: 26px !important;
+        font-size: 22px !important;
     }
 }
 

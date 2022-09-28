@@ -1,3 +1,26 @@
+var console = {
+    __on : {},
+    addEventListener : function (name, callback) {
+      this.__on[name] = (this.__on[name] || []).concat(callback);
+      return this;
+    },
+    dispatchEvent : function (name, value) {
+      this.__on[name] = (this.__on[name] || []);
+      for (var i = 0, n = this.__on[name].length; i < n; i++) {
+        this.__on[name][i].call(this, value);
+      }
+      return this;
+    },
+    log: function () {
+      var a = [];
+      // For V8 optimization
+      for (var i = 0, n = arguments.length; i < n; i++) {
+        a.push(arguments[i]);
+      }
+      this.dispatchEvent("log", a);
+    }
+  };
+
 // Plugin Items collection
  var items = [
     // Text items
@@ -77,7 +100,15 @@ $(document).ready(function() {
     setTimeout(function() {
             reScale();
             reAlign();
+            arrows();
             closeOthers(); 
+            if(window.outerWidth <=767) {
+                $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() + 10);
+                if(!$('#synroc-diagram .visiblebox-1 .text-item .navigation').length >=1 ) {
+                    $('#synroc-diagram .text-item').append($('#synroc-diagram .navigation'));
+                }
+            }
+            
     }, 100);
     
 });
@@ -124,9 +155,10 @@ function reAlign(){
     $('.fifth').css('top', $('#fifth').offset().top-100);
 }
 
-$(parent).on('load, resize', function(){
+$(parent).on('resize', function(){
     setTimeout(function() {
         if(window.outerWidth <=767) {
+            $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() + 10);
             if(!$('#synroc-diagram .hotspot').length >= 1) {
                 $("#synroc-diagram").interactiveImage(items, options);
                 closeOthers();
@@ -176,32 +208,33 @@ $("body").on('keydown', function(e) {
         }
     }    
 });
-
-$(".left, .right").on('click', function(e) {
-    if($('.active').css('display') == "block"){
-        thiss = $('.active');
-        var theClass = thiss.attr("class").match(/visiblebox[\w-]*\b/);
-        classNo = parseInt(theClass[0].split("-")[1]);
-        if($(this).hasClass('left')){
-            if(window.outerWidth <=767) {
-                moveRight(classNo, thiss)
+function arrows(){
+    $(".left, .right").on('click', function(e) {
+        if($('.active').css('display') == "block"){
+            thiss = $('.active');
+            var theClass = thiss.attr("class").match(/visiblebox[\w-]*\b/);
+            classNo = parseInt(theClass[0].split("-")[1]);
+            if($(this).hasClass('left')){
+                if(window.outerWidth <=767) {
+                    moveRight(classNo, thiss)
+                }
+                else{
+                    moveLeft(classNo, thiss)
+                }
             }
-            else{
-                moveLeft(classNo, thiss)
+            if($(this).hasClass('right')){
+                if(window.outerWidth <=767) {
+                    moveLeft(classNo, thiss)
+                }
+                else{
+                    moveRight(classNo, thiss)
+                }
             }
-        }
-        if($(this).hasClass('right')){
-            if(window.outerWidth <=767) {
-                moveLeft(classNo, thiss)
-            }
-            else{
-                moveRight(classNo, thiss)
-            }
-        }
-    }else{
-        displayDefault()
-    }    
-});
+        }else{
+            displayDefault()
+        }    
+    });
+}
 
 function displayDefault(){
     $('.visiblebox-1').css('display', 'block');  
