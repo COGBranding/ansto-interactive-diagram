@@ -27,7 +27,7 @@
       background-color: white;
       max-width: 320px; }
       .interactive-image .unsupported-screen {
-        display: block; } }
+        display: none; } }
   .interactive-image .hotspot {
     position: absolute;
     z-index: 8;
