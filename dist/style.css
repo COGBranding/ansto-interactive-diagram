@@ -132,12 +132,12 @@ span, p {
     border: none;
 }
 
-@media(min-width: 767px){
-    .interactive-image, .interactive-images{
+/* @media(min-device-width: 767px){
+    .interactive-image{
         height:100%;
         width: 100%;    
     }
-}
+} */
 
 svg {
     height: auto;

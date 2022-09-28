@@ -102,8 +102,8 @@ $(document).ready(function() {
             reAlign();
             arrows();
             closeOthers();
-            if(window.innerWidth <=767) {
-                $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() - 60);
+            if(window.outerWidth <=767) {
+                $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() - 80);
                 if(!$('#synroc-diagram .visiblebox-1 .text-item .navigation').length >=1 ) {
                     $('#synroc-diagram .text-item').append($('#synroc-diagram .navigation'));
                 }
@@ -112,54 +112,13 @@ $(document).ready(function() {
     
 });
 
-function reScale(){
-    console.log('here');
-
-   
-    $('#first').attr('data-for',$('.first').prev().attr('data-for'));
-    $('#first').attr('class',$('.first').prev().attr('class'));
-    $('.first').prev().remove();
-
-    $('#second').attr('data-for',$('.second').prev().attr('data-for'));
-    $('#second').attr('class',$('.second').prev().attr('class'));
-    $('.second').prev().remove();
-    
-    $('#third').attr('data-for',$('.third').prev().attr('data-for'));
-    $('#third').attr('class',$('.third').prev().attr('class'));
-    $('.third').prev().remove();
-
-    $('#fourth').attr('data-for',$('.fourth').prev().attr('data-for'));
-    $('#fourth').attr('class',$('.fourth').prev().attr('class'));
-    $('.fourth').prev().remove();
-
-    $('#fifth').attr('data-for',$('.fifth').prev().attr('data-for'));
-    $('#fifth').attr('class',$('.fifth').prev().attr('class'));
-    $('.fifth').prev().remove();
-}
-
-function reAlign(){
-    $('.first').css('left', $('#first').offset().left-400);
-    $('.first').css('top', $('#first').offset().top-250);
-
-    $('.second').css('left', $('#second').offset().left-400);
-    $('.second').css('top', $('#second').offset().top-250);
-
-    $('.third').css('left', $('#third').offset().left-400);
-    $('.third').css('top', $('#third').offset().top-250);
-
-    $('.fourth').css('left', $('#fourth').offset().left+100);
-    $('.fourth').css('top', $('#fourth').offset().top-200);
-
-    $('.fifth').css('left', $('#fifth').offset().left+50);
-    $('.fifth').css('top', $('#fifth').offset().top-250);
-}
-
 var site_width = window.outerWidth;
 $(parent).on('resize', function(){
     document.body.style.zoom = 1.0
+    $('body', 'html').css('height',$('.interactive-image').height());
     setTimeout(function() {
         if(window.outerWidth <=767) {
-            $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() + 10);
+            $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height());
             if(!$('#synroc-diagram .hotspot').length >= 1) {
                 $("#synroc-diagram").interactiveImage(items, options);
                 closeOthers();
@@ -278,4 +237,47 @@ function closeOthers(){
         $(this).addClass('selected');
         $(this).find('.active').css('display', 'block');
     })
+}
+
+
+function reScale(){
+    console.log('here');
+
+   
+    $('#first').attr('data-for',$('.first').prev().attr('data-for'));
+    $('#first').attr('class',$('.first').prev().attr('class'));
+    $('.first').prev().remove();
+
+    $('#second').attr('data-for',$('.second').prev().attr('data-for'));
+    $('#second').attr('class',$('.second').prev().attr('class'));
+    $('.second').prev().remove();
+    
+    $('#third').attr('data-for',$('.third').prev().attr('data-for'));
+    $('#third').attr('class',$('.third').prev().attr('class'));
+    $('.third').prev().remove();
+
+    $('#fourth').attr('data-for',$('.fourth').prev().attr('data-for'));
+    $('#fourth').attr('class',$('.fourth').prev().attr('class'));
+    $('.fourth').prev().remove();
+
+    $('#fifth').attr('data-for',$('.fifth').prev().attr('data-for'));
+    $('#fifth').attr('class',$('.fifth').prev().attr('class'));
+    $('.fifth').prev().remove();
+}
+
+function reAlign(){
+    $('.first').css('left', $('#first').offset().left-400);
+    $('.first').css('top', $('#first').offset().top-250);
+
+    $('.second').css('left', $('#second').offset().left-400);
+    $('.second').css('top', $('#second').offset().top-250);
+
+    $('.third').css('left', $('#third').offset().left-400);
+    $('.third').css('top', $('#third').offset().top-250);
+
+    $('.fourth').css('left', $('#fourth').offset().left+100);
+    $('.fourth').css('top', $('#fourth').offset().top-200);
+
+    $('.fifth').css('left', $('#fifth').offset().left+50);
+    $('.fifth').css('top', $('#fifth').offset().top-250);
 }
