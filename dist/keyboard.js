@@ -156,6 +156,7 @@ function reAlign(){
 
 var site_width = window.outerWidth;
 $(parent).on('resize', function(){
+    document.body.style.zoom = 1.0
     setTimeout(function() {
         if(window.outerWidth <=767) {
             $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height() + 10);
