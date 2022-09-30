@@ -1,3 +1,26 @@
+var console = {
+    __on : {},
+    addEventListener : function (name, callback) {
+      this.__on[name] = (this.__on[name] || []).concat(callback);
+      return this;
+    },
+    dispatchEvent : function (name, value) {
+      this.__on[name] = (this.__on[name] || []);
+      for (var i = 0, n = this.__on[name].length; i < n; i++) {
+        this.__on[name][i].call(this, value);
+      }
+      return this;
+    },
+    log: function () {
+      var a = [];
+      // For V8 optimization
+      for (var i = 0, n = arguments.length; i < n; i++) {
+        a.push(arguments[i]);
+      }
+      this.dispatchEvent("log", a);
+    }
+  };
+
 // Plugin Items collection
  var items = [
     // Text items
@@ -90,9 +113,9 @@ $(document).ready(function() {
 });
 
 var site_width = window.outerWidth;
-$(parent).on('resize', function(){
+$(window).on('resize', function(){
     document.body.style.zoom = 1.0
-    // $('body', 'html').css('height',$('.interactive-image').height());
+    $('body', 'html').css('height',$('.interactive-image').height());
     setTimeout(function() {
         if(window.outerWidth <=767) {
             $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height());
@@ -217,7 +240,10 @@ function closeOthers(){
 }
 
 
-function reScale(){   
+function reScale(){
+    console.log('here');
+
+   
     $('#first').attr('data-for',$('.first').prev().attr('data-for'));
     $('#first').attr('class',$('.first').prev().attr('class'));
     $('.first').prev().remove();
