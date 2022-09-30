@@ -1,26 +1,3 @@
-var console = {
-    __on : {},
-    addEventListener : function (name, callback) {
-      this.__on[name] = (this.__on[name] || []).concat(callback);
-      return this;
-    },
-    dispatchEvent : function (name, value) {
-      this.__on[name] = (this.__on[name] || []);
-      for (var i = 0, n = this.__on[name].length; i < n; i++) {
-        this.__on[name][i].call(this, value);
-      }
-      return this;
-    },
-    log: function () {
-      var a = [];
-      // For V8 optimization
-      for (var i = 0, n = arguments.length; i < n; i++) {
-        a.push(arguments[i]);
-      }
-      this.dispatchEvent("log", a);
-    }
-  };
-
 // Plugin Items collection
  var items = [
     // Text items
@@ -113,7 +90,7 @@ $(document).ready(function() {
 });
 
 var site_width = window.outerWidth;
-$(window).on('resize', function(){
+$(parent).on('resize', function(){
     document.body.style.zoom = 1.0
     $('body', 'html').css('height',$('.interactive-image').height());
     setTimeout(function() {
