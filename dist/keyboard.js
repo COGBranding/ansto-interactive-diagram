@@ -92,7 +92,7 @@ $(document).ready(function() {
 var site_width = window.outerWidth;
 $(parent).on('resize', function(){
     document.body.style.zoom = 1.0
-    $('body', 'html').css('height',$('.interactive-image').height());
+    // $('body', 'html').css('height',$('.interactive-image').height());
     setTimeout(function() {
         if(window.outerWidth <=767) {
             $('.item.behavior-sticky.synroc-diagram__hotspot').css('top', $('.interactive-image').height());
@@ -217,10 +217,7 @@ function closeOthers(){
 }
 
 
-function reScale(){
-    console.log('here');
-
-   
+function reScale(){   
     $('#first').attr('data-for',$('.first').prev().attr('data-for'));
     $('#first').attr('class',$('.first').prev().attr('class'));
     $('.first').prev().remove();
