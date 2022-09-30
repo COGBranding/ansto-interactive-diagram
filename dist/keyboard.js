@@ -113,7 +113,7 @@ $(document).ready(function() {
 });
 
 var site_width = window.outerWidth;
-$(parent).on('resize', function(){
+$(window).on('resize', function(){
     document.body.style.zoom = 1.0
     $('body', 'html').css('height',$('.interactive-image').height());
     setTimeout(function() {
